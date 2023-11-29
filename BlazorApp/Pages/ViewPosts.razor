@@ -1,0 +1,88 @@
+@page "/ViewPosts"
+@using HttpClients.ClientInterfaces
+@using Domain.Models
+@inject IPostService postService
+@inject NavigationManager navMgr
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<h3>Forum Posts</h3>
+
+@if (posts == null)
+{
+}
+else if (!posts.Any())
+{
+    <p>No posts to display</p>
+}
+else
+{
+    @foreach (var post in posts)
+    {
+        <div class="posts">
+            <div class="user">
+                <p>@post.OwnerUsername</p>
+            </div>
+            <h3 class="user">@post.Title</h3>
+            <p>@post.Body</p>
+            <div>
+                <button @onclick="() => EditPost(post.Id)">Edit</button>
+                <button @onclick="() => DeletePost(post.Id)">Delete</button>
+            </div>
+            <div style="clear:both;"></div>
+        </div>
+    }
+}
+@if (!string.IsNullOrEmpty(msg))
+{
+    <label style="color: red">@msg</label>
+}
+
+@code {
+    private IEnumerable<Post>? posts;
+    private string msg = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            posts = await postService.GetAsync(null, null, null);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private void EditPost(int postId)
+    {
+        navMgr.NavigateTo($"/EditPost/{postId}");
+    }
+
+    private async Task DeletePost(int postId)
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            // Check if the user is the owner of the post or has the "admin" role
+            var post = posts.FirstOrDefault(p => p.Id == postId);
+            if (post != null && (user.Identity.Name == post.OwnerUsername || user.IsInRole("admin")))
+            {
+                await postService.DeleteAsync(postId);
+                // Remove the deleted post from the list
+                posts = posts.Where(p => p.Id != postId);
+            }
+            else
+            {
+                msg = "You are not authorized to delete this post.";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

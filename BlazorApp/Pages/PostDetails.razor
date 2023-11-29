@@ -1,0 +1,64 @@
+@page "/posts/{Id:int}"
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@using Domain.DTOs
+@using Microsoft.AspNetCore.Components
+@inject IPostService postService
+@inject IUserService userService
+@inject NavigationManager navMgr
+
+<div class="card">
+    @if (users == null)
+    {
+        <label>Loading users...</label>
+    }
+    else if (!users.Any())
+    {
+        <label>No users, you cannot create a Todo</label>
+    }
+    else if (dto == null)
+    {
+        <label>Loading Todo data..</label>
+    }
+    else
+    {
+        <h3>@dto.Title</h3>
+        <label>@dto.Body</label>
+    }
+    @if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private GetPostDto dto = null!;
+    private string msg = "";
+    private IEnumerable<User>? users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            users = await userService.GetUsers();
+            PostBasicDto postData = await postService.GetByIdAsync(Id);
+            User currentlyAssigned = users.First(user => user.Username.Equals(postData.OwnerUsername));
+
+            dto = new(Id)
+            {
+                Title = postData.Title,
+                Body = postData.Body
+            };
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

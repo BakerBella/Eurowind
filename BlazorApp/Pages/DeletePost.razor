@@ -1,0 +1,97 @@
+@page "/DeletePost/{id:int}"
+@using Domain.DTOs
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IPostService postService
+@inject IUserService userService
+@inject NavigationManager navMgr
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="card">
+    @if (users == null)
+    {
+        <label>Loading users...</label>
+    }
+    else if (!users.Any())
+    {
+        <label>No users, you cannot create a Post</label>
+    }
+    else if (dto == null)
+    {
+        <label>Loading Post data..</label>
+    }
+    else
+    {
+        <h3>Delete Post</h3>
+        <p>Are you sure you want to delete this post?</p>
+        <div class="form-group field">
+            <label>Title:</label>
+            <input type="text" value="@dto.Title" disabled />
+        </div>
+        <div class="form-group field">
+            <label>Body:</label>
+            <textarea disabled>@dto.Body</textarea>
+        </div>
+        <div class="button-row">
+            <button @onclick="DeletePostAsync" class="acceptbtn">Delete</button>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private PostBasicDto dto = null!;
+    private string msg = "";
+    private IEnumerable<User>? users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            users = await userService.GetUsers();
+            PostBasicDto postData = await postService.GetByIdAsync(Id);
+            User currentlyAssigned = users.First(user => user.Username.Equals(postData.OwnerUsername));
+
+            dto = new PostBasicDto(Id, currentlyAssigned.Username, postData.Title, postData.Body);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private async Task DeletePostAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+    // Check if the user is the owner of the post or has the "admin" role
+            if (dto != null && (user.Identity.Name == dto.OwnerUsername || user.IsInRole("admin")))
+            {
+                await postService.DeleteAsync(dto.Id);
+
+                navMgr.NavigateTo("/ViewPosts");
+            }
+            else
+            {
+                msg = "You are not authorized to delete this post.";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

@@ -1,0 +1,104 @@
+@page "/EditPost/{id:int}"
+@using Domain.DTOs
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@inject IPostService postService
+@inject IUserService userService
+@inject NavigationManager navMgr
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="card">
+    @if (users == null)
+    {
+        <label>Loading users...</label>
+    }
+    else if (!users.Any())
+    {
+        <label>No users, you cannot create a Post</label>
+    }
+    else if (dto == null)
+    {
+        <label>Loading Post data..</label>
+    }
+    else
+    {
+        <h3>Update Post</h3>
+        <div class="form-group field">
+            <label>Title:</label>
+            <input type="text" @bind="dto.Title" />
+        </div>
+        <div class="form-group field">
+            <label>Body:</label>
+            <textarea @bind="dto.Body"></textarea>
+        </div>
+        <div class="button-row">
+            <button @onclick="UpdateAsync" class="acceptbtn">Update</button>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public int Id { get; set; }
+
+    private PostBasicDto dto = null!;
+    private string msg = "";
+    private IEnumerable<User>? users;
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            users = await userService.GetUsers();
+            PostBasicDto postData = await postService.GetByIdAsync(Id);
+            User currentlyAssigned = users.First(user => user.Username.Equals(postData.OwnerUsername));
+
+            dto = new PostBasicDto(Id, currentlyAssigned.Username, postData.Title, postData.Body);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private async Task UpdateAsync()
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            // Check if the user is the owner of the post or has the "admin" role
+            if (dto != null && (user.Identity.Name == dto.OwnerUsername || user.IsInRole("admin")))
+            {
+                // Ensure that GetPostDto has the necessary properties (Id, Title, Body, OwnerId)
+                GetPostDto updateDto = new GetPostDto(dto.Id)
+                {
+                    Title = dto.Title,
+                    Body = dto.Body,
+                    OwnerId = null // You may need to set this based on your application logic
+                };
+
+                await postService.UpdateAsync(updateDto);
+
+                navMgr.NavigateTo("/ViewPosts");
+            }
+            else
+            {
+                msg = "You are not authorized to update this post.";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

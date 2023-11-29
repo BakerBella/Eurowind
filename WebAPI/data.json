@@ -1,0 +1,186 @@
+{
+  "Users": [
+    {
+      "userId": 0,
+      "UserName": "stringeling",
+      "Password": "string12345",
+      "Role": null
+    },
+    {
+      "userId": 0,
+      "UserName": "Lolle123",
+      "Password": "Lolle1234567",
+      "Role": null
+    },
+    {
+      "userId": 1,
+      "UserName": "MikkelWJ",
+      "Password": "12345678",
+      "Role": null
+    },
+    {
+      "userId": 2,
+      "UserName": "Mikkel12345",
+      "Password": "12345678",
+      "Role": null
+    },
+    {
+      "userId": 3,
+      "UserName": "LilleBetteEn",
+      "Password": "JaHejDav123",
+      "Role": null
+    },
+    {
+      "userId": 4,
+      "UserName": "Lollelel",
+      "Password": "12345678",
+      "Role": null
+    },
+    {
+      "userId": 5,
+      "UserName": "Aleksandra",
+      "Password": "12345678",
+      "Role": null
+    },
+    {
+      "userId": 6,
+      "UserName": "Henrik1234",
+      "Password": "12345678",
+      "Role": null
+    }
+  ],
+  "Posts": [
+    {
+      "Id": 1,
+      "Title": "Hvad sker der?!",
+      "Body": "KOM NU DANMARK!",
+      "Owner": {
+        "userId": 0,
+        "UserName": "stringeling",
+        "Password": "string12345",
+        "Role": null
+      }
+    },
+    {
+      "Id": 2,
+      "Title": "Hvad sker der NU IGEN?!",
+      "Body": "KOM NU DANMARK!",
+      "Owner": {
+        "userId": 0,
+        "UserName": "stringeling",
+        "Password": "string12345",
+        "Role": null
+      }
+    },
+    {
+      "Id": 3,
+      "Title": "Hvad sker der NU IGEN?!",
+      "Body": "KOM NU DANMARK!",
+      "Owner": {
+        "userId": 0,
+        "UserName": "Lolle123",
+        "Password": "Lolle1234567",
+        "Role": null
+      }
+    },
+    {
+      "Id": 4,
+      "Title": "En bette test da",
+      "Body": "Virker det nu?!?!?",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "12345678",
+        "Role": null
+      }
+    },
+    {
+      "Id": 5,
+      "Title": "Hvad skal der ske Danmark?",
+      "Body": "Kom nu i gang Danmark!",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "12345678",
+        "Role": null
+      }
+    },
+    {
+      "Id": 6,
+      "Title": "Looooooool",
+      "Body": "Hej Christian",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "12345678",
+        "Role": null
+      }
+    },
+    {
+      "Id": 7,
+      "Title": "Her g\u00E5r det nogenlunde",
+      "Body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "12345678",
+        "Role": null
+      }
+    },
+    {
+      "Id": 8,
+      "Title": "Hallllooooooo mand",
+      "Body": "Virker det her fint?",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "12345678",
+        "Role": null
+      }
+    },
+    {
+      "Id": 9,
+      "Title": "Hej med diiiig",
+      "Body": "Hallo mand",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "",
+        "Role": "User"
+      }
+    },
+    {
+      "Id": 10,
+      "Title": "Det ser ud til at virke",
+      "Body": "Det d\u00E6lme rart",
+      "Owner": {
+        "userId": 0,
+        "UserName": "MikkelWJ",
+        "Password": "",
+        "Role": "User"
+      }
+    },
+    {
+      "Id": 11,
+      "Title": "asd",
+      "Body": "asd",
+      "Owner": {
+        "userId": 0,
+        "UserName": "Aleksandra",
+        "Password": "",
+        "Role": "User"
+      }
+    },
+    {
+      "Id": 12,
+      "Title": "Lollemand",
+      "Body": "lolle hej dig",
+      "Owner": {
+        "userId": 0,
+        "UserName": "Henrik1234",
+        "Password": "",
+        "Role": "User"
+      }
+    }
+  ]
+}
