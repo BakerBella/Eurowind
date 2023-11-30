@@ -16,12 +16,14 @@ builder.Services.AddScoped<IUserDao, UserEfcDao>();
 builder.Services.AddScoped<IUserLogic, UserLogic>();
 builder.Services.AddScoped<IPostDao, PostEfcDao>();
 builder.Services.AddScoped<IPostLogic, PostLogic>();
+builder.Services.AddScoped<ICommentDao, CommentEfcDao>();
 builder.Services.AddControllers();
 builder.Services.AddDbContext<PostContext>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<IAuthService, AuthService>();
+builder.Services.AddScoped<ICommentLogic, CommentLogic>();
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJwtBearer(options =>
 {
     options.RequireHttpsMetadata = false;

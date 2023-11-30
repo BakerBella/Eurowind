@@ -1,4 +1,4 @@
-@page "/posts/{Id:int}"
+@page "/PostDetails/{id:int}"
 @using Domain.Models
 @using HttpClients.ClientInterfaces
 @using Domain.DTOs
@@ -18,12 +18,34 @@
     }
     else if (dto == null)
     {
-        <label>Loading Todo data..</label>
+        <label>Loading Todo data...</label>
     }
     else
     {
         <h3>@dto.Title</h3>
         <label>@dto.Body</label>
+
+        <div>
+            <h4>Author: @dto.OwnerUsername</h4>
+        </div>
+
+        <div>
+            <h4>Comments:</h4>
+            @if (dto.Comments != null && dto.Comments.Any())
+            {
+                @foreach (var comment in dto.Comments)
+                {
+                    <div>
+                        <p>Author: @comment.Username</p>
+                        <p>Body: @comment.Body</p>
+                    </div>
+                }
+            }
+            else
+            {
+                <p>No comments available</p>
+            }
+        </div>
     }
     @if (!string.IsNullOrEmpty(msg))
     {
@@ -32,11 +54,10 @@
 </div>
 
 @code {
-
     [Parameter]
     public int Id { get; set; }
 
-    private GetPostDto dto = null!;
+    private PostWithCommentsDto dto = null!;
     private string msg = "";
     private IEnumerable<User>? users;
 
@@ -46,14 +67,7 @@
         try
         {
             users = await userService.GetUsers();
-            PostBasicDto postData = await postService.GetByIdAsync(Id);
-            User currentlyAssigned = users.First(user => user.Username.Equals(postData.OwnerUsername));
-
-            dto = new(Id)
-            {
-                Title = postData.Title,
-                Body = postData.Body
-            };
+            dto = await postService.GetPostWithCommentsAsync(Id);
         }
         catch (Exception e)
         {
