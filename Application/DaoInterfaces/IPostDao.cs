@@ -10,4 +10,6 @@ public interface IPostDao
     Task UpdateAsync(Post post);
     Task DeleteAsync(int id);
     Task<Post?> GetByIdAsync(int id);
+    Task<Comment> CreateCommentAsync(CommentCreationDto commentDto);
+    Task<IEnumerable<Comment>> GetCommentsForPostAsync(int postId);
 }

@@ -12,6 +12,8 @@ public class User
     [JsonIgnore]
     public ICollection<Post> Posts { get; set; }
 
+    public ICollection<Comment> Comments { get; set; } = new List<Comment>();
+
     public User()
     {
         //empty

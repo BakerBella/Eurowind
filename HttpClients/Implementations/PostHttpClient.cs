@@ -18,14 +18,14 @@ public class PostHttpClient : IPostService
 
     public async Task CreateAsync(PostCreationDto dto)
     {
-        HttpResponseMessage response = await client.PostAsJsonAsync("/posts",dto);
+        HttpResponseMessage response = await client.PostAsJsonAsync("/posts", dto);
         if (!response.IsSuccessStatusCode)
         {
             string content = await response.Content.ReadAsStringAsync();
             throw new Exception(content);
         }
     }
-    
+
     public async Task<ICollection<Post>> GetAsync(string? userName, string? titleContains, string? bodyContains)
     {
         HttpResponseMessage response = await client.GetAsync("/posts");
@@ -41,7 +41,7 @@ public class PostHttpClient : IPostService
         })!;
         return posts;
     }
-    
+
     public async Task UpdateAsync(GetPostDto dto)
     {
         string dtoAsJson = JsonSerializer.Serialize(dto);
@@ -64,7 +64,7 @@ public class PostHttpClient : IPostService
             throw new Exception(content);
         }
 
-        PostBasicDto post = JsonSerializer.Deserialize<PostBasicDto>(content, 
+        PostBasicDto post = JsonSerializer.Deserialize<PostBasicDto>(content,
             new JsonSerializerOptions
             {
                 PropertyNameCaseInsensitive = true
@@ -72,7 +72,7 @@ public class PostHttpClient : IPostService
         )!;
         return post;
     }
-    
+
     public async Task DeleteAsync(int id)
     {
         HttpResponseMessage response = await client.DeleteAsync($"Posts/{id}");
@@ -82,4 +82,27 @@ public class PostHttpClient : IPostService
             throw new Exception(content);
         }
     }
+
+    public async Task<PostWithCommentsDto> GetPostWithCommentsAsync(int id)
+    {
+        HttpResponseMessage response = await client.GetAsync($"/posts/{id}/comments");
+        string content = await response.Content.ReadAsStringAsync();
+
+        if (response.IsSuccessStatusCode)
+        {
+            PostWithCommentsDto postWithComments = JsonSerializer.Deserialize<PostWithCommentsDto>(content,
+                new JsonSerializerOptions
+                {
+                    PropertyNameCaseInsensitive = true
+                }
+            )!;
+            return postWithComments;
+        }
+        else
+        {
+            // If the response is not successful, handle the error here
+            throw new Exception($"Error: {response.StatusCode} - {content}");
+        }
+    }
+
 }
