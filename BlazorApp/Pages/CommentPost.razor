@@ -1,0 +1,86 @@
+@page "/CreateComment/{postId:int}"
+@using Domain.DTOs
+@using Domain.Models
+@using HttpClients.ClientInterfaces
+@using System.Security.Claims
+@inject ICommentService commentService
+@inject NavigationManager navMgr
+@inject AuthenticationStateProvider AuthenticationStateProvider
+
+<div class="card">
+    @if (commentDto == null)
+    {
+        <label>Loading Post data...</label>
+    }
+    else
+    {
+        <h3>Create Comment</h3>
+        <div class="form-group field">
+            <label>Body:</label>
+            <textarea @bind="commentDto.Body"></textarea>
+        </div>
+        <div class="button-row">
+            <button @onclick="CreateCommentAsync" class="acceptbtn">Create Comment</button>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(msg))
+    {
+        <label style="color: red">@msg</label>
+    }
+</div>
+
+@code {
+
+    [Parameter]
+    public int PostId { get; set; }
+
+    private CommentCreationDto commentDto;
+    private string msg = "";
+    private ClaimsPrincipal currentUser;
+
+    protected override async Task OnInitializedAsync()
+    {
+        msg = "";
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            currentUser = authState.User;
+
+            commentDto = new CommentCreationDto
+            {
+                PostId = PostId,
+                Username = currentUser.Identity.Name ?? "Anonymous", // Use the username or set to "Anonymous" if not logged in
+                Body = ""
+            };
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private async Task CreateCommentAsync()
+    {
+        try
+        {
+            // Check if the user is logged in
+            if (currentUser.Identity.IsAuthenticated)
+            {
+                // Ensure that CommentCreationDto has the necessary properties (PostId, Username, Body)
+                await commentService.CreateCommentAsync(commentDto);
+
+                navMgr.NavigateTo($"/posts/{PostId}");
+            }
+            else
+            {
+                msg = "You must be logged in to create a comment.";
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+}

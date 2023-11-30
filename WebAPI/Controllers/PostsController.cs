@@ -11,12 +11,29 @@ namespace WebAPI.Controllers;
 public class PostsController : ControllerBase
 {
     private readonly IPostLogic postLogic;
+    private readonly ICommentLogic commentLogic;
 
-    public PostsController(IPostLogic postLogic)
+    public PostsController(IPostLogic postLogic, ICommentLogic commentLogic)
     {
         this.postLogic = postLogic;
+        this.commentLogic = commentLogic;
     }
     
+    [HttpGet("{id:int}/comments")]
+    public async Task<ActionResult<IEnumerable<Comment>>> GetCommentsForPostAsync([FromRoute] int id)
+    {
+        try
+        {
+            var comments = await commentLogic.GetCommentsForPostAsync(id);
+            return Ok(comments);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            return StatusCode(500, e.Message);
+        }
+    }
+
     [HttpPost]
     public async Task<ActionResult<Post>> CreateAsync([FromBody]PostCreationDto dto)
     {
@@ -78,7 +95,7 @@ public class PostsController : ControllerBase
             return StatusCode(500, e.Message);
         }
     }
-
+    
     [HttpGet("{id:int}")]
     public async Task<ActionResult<PostBasicDto>> GetById([FromRoute] int id)
     {

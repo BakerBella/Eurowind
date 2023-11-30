@@ -22,11 +22,12 @@ else
             <div class="user">
                 <p>@post.OwnerUsername</p>
             </div>
-            <h3 class="user">@post.Title</h3>
+               <h3 class="user" @onclick="() => PostDetails(post.Id)">@post.Title</h3>
             <p>@post.Body</p>
             <div>
                 <button @onclick="() => EditPost(post.Id)">Edit</button>
                 <button @onclick="() => DeletePost(post.Id)">Delete</button>
+                <button @onclick="() => CommentPost(post.Id)">Comment</button>
             </div>
             <div style="clear:both;"></div>
         </div>
@@ -52,6 +53,11 @@ else
             Console.WriteLine(e);
             msg = e.Message;
         }
+    }
+    
+    private void PostDetails(int postId)
+    {
+        navMgr.NavigateTo($"/PostDetails/{postId}");
     }
 
     private void EditPost(int postId)
@@ -84,5 +90,10 @@ else
             Console.WriteLine(e);
             msg = e.Message;
         }
+    }
+    
+    private void CommentPost(int postId)
+    {
+        navMgr.NavigateTo($"/CreateComment/{postId}");
     }
 }
