@@ -13,6 +13,7 @@ public interface IPostService
     );
 
     Task<PostBasicDto> GetByIdAsync(int id);
+    Task<PostWithCommentsDto> GetPostWithCommentsAsync(int id);
     Task UpdateAsync(GetPostDto dto);
     Task DeleteAsync(int id);
 }

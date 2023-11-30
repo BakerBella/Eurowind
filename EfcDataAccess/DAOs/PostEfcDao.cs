@@ -60,4 +60,25 @@ public class PostEfcDao : IPostDao
         context.Posts.Remove(existing);
         await context.SaveChangesAsync();
     }
+    
+    public async Task<Comment> CreateCommentAsync(CommentCreationDto commentDto)
+    {
+        var comment = new Comment
+        {
+            Body = commentDto.Body,
+            PostId = commentDto.PostId,
+            Username = commentDto.Username
+        };
+
+        EntityEntry<Comment> added = await context.Comments.AddAsync(comment);
+        await context.SaveChangesAsync();
+        return added.Entity;
+    }
+    
+    public async Task<IEnumerable<Comment>> GetCommentsForPostAsync(int postId)
+    {
+        return await context.Comments
+            .Where(comment => comment.PostId == postId)
+            .ToListAsync();
+    }
 }
