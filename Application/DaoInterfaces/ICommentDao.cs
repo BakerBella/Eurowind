@@ -1,11 +1,11 @@
 using Domain.DTOs;
 using Domain.Models;
 
-namespace Application.LogicInterfaces;
+namespace Application.DaoInterfaces;
 
-public interface ICommentLogic
+public interface ICommentDao
 {
-    Task<Comment> CreateAsync(CommentCreationDto dto);
+    Task<Comment> CreateCommentAsync(CommentCreationDto commentDto);
     Task<IEnumerable<Comment>> GetCommentsForPostAsync(int postId);
     Task<IEnumerable<Comment>> GetCommentsForUserAsync(string username);
     Task<Comment> GetCommentByIdAsync(int commentId);

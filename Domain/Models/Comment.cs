@@ -12,7 +12,7 @@ public class Comment
     [ForeignKey("Post")]
     public int PostId { get; set; }
     public Post Post { get; set; }
-    
+
     [ForeignKey("User")]
     public string Username { get; set; }
     public User User { get; set; }

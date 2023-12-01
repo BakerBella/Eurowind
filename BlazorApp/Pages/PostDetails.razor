@@ -4,9 +4,10 @@
 @using Domain.DTOs
 @using Microsoft.AspNetCore.Components
 @inject IPostService postService
+@inject ICommentService commentService
 @inject IUserService userService
 @inject NavigationManager navMgr
-
+@inject AuthenticationStateProvider AuthenticationStateProvider
 <div class="card">
     @if (users == null)
     {
@@ -31,22 +32,24 @@
 
         <div>
             <h4>Comments:</h4>
-            @if (dto.Comments != null && dto.Comments.Any())
+            @if (additionalComments != null && additionalComments.Any())
             {
-                @foreach (var comment in dto.Comments)
+                @foreach (var comment in additionalComments)
                 {
                     <div>
                         <p>Author: @comment.Username</p>
                         <p>Body: @comment.Body</p>
+                        <button @onclick="() => DeleteComment(comment.Id)">Delete</button>
                     </div>
                 }
             }
             else
             {
-                <p>No comments available</p>
+                <p>No additional comments available</p>
             }
         </div>
     }
+
     @if (!string.IsNullOrEmpty(msg))
     {
         <label style="color: red">@msg</label>
@@ -57,9 +60,10 @@
     [Parameter]
     public int Id { get; set; }
 
-    private PostWithCommentsDto dto = null!;
-    private string msg = "";
+    private PostBasicDto dto = null!;
     private IEnumerable<User>? users;
+    private string msg = "";
+    private IEnumerable<Comment> additionalComments;
 
     protected override async Task OnInitializedAsync()
     {
@@ -67,7 +71,35 @@
         try
         {
             users = await userService.GetUsers();
-            dto = await postService.GetPostWithCommentsAsync(Id);
+            dto = await postService.GetByIdAsync(Id);
+
+            // Fetch comments from the service and assign them to comments
+            additionalComments = await commentService.GetCommentsForPostAsync(Id);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            msg = e.Message;
+        }
+    }
+
+    private async Task DeleteComment(int commentId)
+    {
+        try
+        {
+            var authState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
+            var user = authState.User;
+
+            var comment = additionalComments.FirstOrDefault(c => c.Id == commentId);
+            if (comment != null && (user.Identity.Name == comment.Username || user.IsInRole("admin")))
+            {
+                await commentService.DeleteCommentAsync(commentId);
+                additionalComments = additionalComments.Where(c => c.Id != commentId);
+            }
+            else
+            {
+                msg = "You are not authorized to delete this post.";
+            }
         }
         catch (Exception e)
         {

@@ -41,7 +41,7 @@ public class PostLogic : IPostLogic
         Post? post = await postDao.GetByIdAsync(id);
         if (post == null)
         {
-            throw new Exception($"Todo with id {id} not found");
+            throw new Exception($"Post with id {id} not found");
         }
 
         return new PostBasicDto(post.Id, post.Owner.Username, post.Title, post.Body);
