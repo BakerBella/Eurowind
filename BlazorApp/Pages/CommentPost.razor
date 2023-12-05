@@ -70,7 +70,9 @@
                 // Ensure that CommentCreationDto has the necessary properties (PostId, Username, Body)
                 await commentService.CreateCommentAsync(commentDto);
 
-                navMgr.NavigateTo($"/posts/{PostId}");
+                //navMgr.NavigateTo($"/posts/{PostId}");
+                //Changed to: 
+                navMgr.NavigateTo($"/ViewPosts");
             }
             else
             {
