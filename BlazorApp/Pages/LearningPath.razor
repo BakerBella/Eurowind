@@ -1,0 +1,149 @@
+﻿@page "/LearningPath"
+
+<div class="top-strip">
+    <div class="top-strip-container">
+        <img src="img/Eurologo.png" alt="Eurowind Logo" class="logo">
+        <div class="text-container">
+                    <h1>Learning Path</h1>
+                    
+                </div>
+    </div>
+</div>
+
+<p>Welcome to the learning path page! Here, you can find a structured path for your learning journey.</p>
+
+<div class="container">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Step 1</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(1)">Climate change</p>
+            <div class="info-box" style="display: @((activeContent == 1) ? "block" : "none")">
+                <p>
+                    Climate change is primarily occurring due to the enhanced greenhouse effect, a result of human activities releasing large quantities of greenhouse gases, such as carbon dioxide (CO2), methane (CH4), and nitrous oxide (N2O), into the atmosphere. The burning of fossil fuels for energy, deforestation, and industrial processes significantly increase the concentration of these gases, trapping heat and causing the Earth's temperature to rise. This warming leads to various environmental changes, including melting ice caps, rising sea levels, and more frequent and severe weather events. Human-induced factors amplify the natural greenhouse effect, upsetting the delicate balance that has sustained Earth's climate for millennia. Tackling climate change necessitates global efforts to reduce emissions, transition to sustainable energy sources, and implement conservation measures to mitigate its adverse impacts on ecosystems and societies worldwide.
+                </p>
+                <div class="learning1">
+                        <img src="img/learning1.png" alt="learning1" class="learning1">
+                    </div>
+            </div>
+            <button @onclick="() => ToggleInfoBox(1)">
+                @((activeContent == 1 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 2</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(2)">How to stop climate change</p>
+            <div class="info-box" style="display: @((activeContent == 2) ? "block" : "none")">
+                <p>
+                    To combat climate change, a multifaceted approach is essential. Transitioning to renewable energy sources like solar and wind, promoting energy efficiency, and investing in green technologies are pivotal. Reducing deforestation and implementing sustainable land-use practices help sequester carbon. Governments should enact and enforce stringent environmental policies, encouraging industries to adopt eco-friendly practices. Individuals can contribute by adopting sustainable lifestyles, reducing waste, and supporting environmentally conscious products. Global cooperation is crucial for tackling climate change. Nations must collaborate to set and achieve ambitious emissions reduction targets. Investing in research for innovative solutions, such as carbon capture and storage, is vital. Educating communities about the impact of climate change fosters awareness and collective action. Advocacy for policies that address environmental justice and prioritize marginalized communities is essential. Ultimately, a comprehensive strategy involving individuals, industries, and governments is necessary to mitigate and adapt to the challenges posed by climate change
+                </p>
+            </div>
+            <button @onclick="() => ToggleInfoBox(2)">
+                @((activeContent == 2 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 3</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(3)">Different sources of energy</p>
+            <div class="info-box" style="display: @((activeContent == 3) ? "block" : "none")">
+                <p>
+                    Various sources of energy power our world. Fossil fuels like coal, oil, and natural gas are traditional but contribute to climate change. Renewable sources, such as solar and wind, harness nature's elements sustainably. Nuclear energy relies on atomic reactions. Hydropower utilizes flowing water. These diverse sources drive our global energy mix.
+                </p>
+                <div class="learning3">
+                                        <img src="img/learning3.png" alt="learning3" class="learning3">
+                                    </div>
+            </div>
+            <button @onclick="() => ToggleInfoBox(3)">
+                @((activeContent == 3 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 4</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(4)">Advantages of wind energy</p>
+            <div class="info-box" style="display: @((activeContent == 4) ? "block" : "none")">
+                <p>
+                    Denmark has successfully embraced wind energy as a primary solution due to its geographical and policy advantages. The country's flat topography and extensive coastline create ideal conditions for harnessing wind power. Denmark has invested heavily in wind infrastructure and established favorable policies, fostering a robust wind energy sector. The government's commitment to renewable energy, coupled with innovative technologies and community engagement, has propelled Denmark to a leading position globally in wind power generation. Wind energy contributes significantly to Denmark's electricity supply, reducing reliance on fossil fuels and mitigating carbon emissions. The success of wind energy in Denmark showcases its potential as a sustainable, clean, and economically viable solution, serving as a model for other nations seeking to transition to greener energy sources.
+                </p>
+            </div>
+            <button @onclick="() => ToggleInfoBox(4)">
+                @((activeContent == 4 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+    <!-- Step 5 -->    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 5</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(5)">Knowledge about electricity</p>
+            <div class="info-box" style="display: @((activeContent == 5) ? "block" : "none")">
+                <p>
+                    Modern societies depend heavily on electricity for essential functions, shaping lifestyles,
+                    economies, and infrastructure. Electricity powers homes, providing lighting, heating, cooling,
+                    and electronic devices. Industries rely on it for manufacturing processes, machinery, 
+                    and automation. Communication networks, from the internet to telecommunication systems, 
+                    hinge on a stable power supply. Transportation is increasingly electrified with electric 
+                    cars and public transit.
+                </p>
+                <div class="learning5">
+                    <img src="img/learning5.png" alt="learning5" class="learning5">
+                    </div>
+            </div>
+            <button @onclick="() => ToggleInfoBox(5)">
+                @((activeContent == 5 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+
+    <div class="arrow">&#8595;</div>
+
+   
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 6</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(6)">Coal VS wind energy</p>
+            <div class="info-box" style="display: @((activeContent == 6) ? "block" : "none")">
+                <p>
+                    Coal energy has been a mainstay, offering reliable power and supporting 
+                    industrialization. Its benefits include consistent energy production and 
+                    affordability. However, burning coal releases greenhouse gases, contributing to 
+                    climate change, and pollutants harmful to air quality and human health. Mining 
+                    poses environmental challenges, impacting landscapes and water sources.
+                </p>
+                <div class="learning6">
+                    <img src="img/learning6.jpg" alt="learning6" class="learning6">
+                    </div>
+            </div>
+            <button @onclick="() => ToggleInfoBox(6)">
+                @((activeContent == 6 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+</div>
+
+@code {
+    int activeContent = 0;
+    bool isContentExpanded = false;
+
+    void ToggleInfoBox(int contentId) {
+        activeContent = (activeContent == contentId) ? 0 : contentId;
+        isContentExpanded = !isContentExpanded;
+        StateHasChanged(); // Force Blazor to update the UI
+    }
+}

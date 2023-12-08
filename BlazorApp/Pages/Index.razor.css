@@ -6,15 +6,19 @@ body {
 }
 
 .hero-section {
-    background-color: #023266;
+    position: relative;
+    background-color: #c3dffa;
     color: #fff;
-    padding: 50px 0;
+    padding: 30px 20px;
     text-align: center;
 }
 
 .logo {
-    width: 150px;
-    height: 150px;
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    width: 120px;
+    height: auto;
 }
 
 .windmill-container img {
@@ -24,8 +28,27 @@ body {
 }
 
 .welcome-container {
-    max-width: 800px;
-    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the start (left) */
+    margin-top: 20px; /* Adjust as needed to create space between logo and text */
+}
+
+.text-container {
+
+    flex-grow: 1;
+    text-align: center; /* Align the text to the left */
+    color: #041e42;
+    margin-left: 70px; /* Adjust as needed to create space between logo and text */
+}
+
+
+
+@media (min-width: 768px) {
+
+    .welcome-container {
+        justify-content: space-between; /* Create space between logo and text on larger screens */
+    }
 }
 
 .professional-opening {
@@ -74,3 +97,37 @@ body {
 .call-to-action button:hover {
     background-color: #218838;
 }
+
+.features-heading {
+    position: relative; /* Change from absolute to relative */
+    margin-top: 40px;   /* Adjust margin to create space from the top */
+    text-align: center;  /* Center the text horizontally */
+    text-transform: uppercase;
+    font-family: verdana;
+    font-size: 4em;
+    font-weight: 600;
+    color: #041e42;
+    text-shadow: 1px 1px 1px #919191;
+}
+
+
+
+.picture2 {
+    width: 100%;
+    height: auto;
+    max-width: 100%; /* Ensure the image doesn't exceed its original size */
+    display: block; /* Remove any extra spacing below the image */
+    margin: 0 auto; /* Center the image horizontally */
+}
+
+
+.feature {
+    margin: 20px 0;
+}
+
+.feature h3 {
+    margin-top: 50px; /* Adjust the margin-bottom as needed */
+    margin-bottom: 10px;
+}
+
+  

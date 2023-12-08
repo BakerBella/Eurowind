@@ -1,31 +1,4 @@
-.card {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    transition: 0.3s;
-    width: 250px;
-    padding: 25px;
-    text-align: center;
-    margin: auto;
-    margin-top: 50px;
-    border-radius: 15px;
-}
-
-.field {
-    margin-top: 20px;
-}
-
-.acceptbtn {
-    background-color: lightblue;
-    border-radius: 5px;
-    padding: 5px;
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.button-row {
-    margin-top: 15px;
-}
-
-
+﻿
 .top-strip {
     position: relative;
     background-color: #c3dffa;
@@ -47,15 +20,18 @@ h1 {
     flex-grow: 1;
     text-align: center; /* Align the text to the left */
     color: #041e42;
-   
+
 }
 
 button{
     margin-top: 15px;
+    margin-left: 45px;
+    margin-bottom: 15px;
     background-color: #c3dffa;
     color: #041e42;
+    
 }
 
-.titleText{
-    margin-bottom: 20px;
+textarea{
+    width: 50%;
 }

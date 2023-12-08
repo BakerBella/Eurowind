@@ -6,6 +6,30 @@ body {
     padding: 0;
 }
 
+.top-strip {
+    position: relative;
+    background-color: #c3dffa;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    width: 120px;
+    height: auto;
+}
+
+h1 {
+    flex-grow: 1;
+    text-align: center; /* Align the text to the left */
+    color: #041e42;
+    margin-left: 70px; /* Adjust as needed to create space between logo and text */
+}
+
 h2 {
     color: #023266;
     font-weight: bold;
@@ -13,15 +37,27 @@ h2 {
     margin-bottom: 20px;
 }
 
-p {
+p.eurowind-description {
     text-align: justify;
+    margin-bottom: 20px; /* Adjust as needed for this specific paragraph */
+}
+
+p.eurowind-g-transition {
+    text-align: justify;
+    margin-bottom: 0;
 }
 
 /* Styling for the headings */
 h4 {
     font-weight: bold;
     margin-top: 10px;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
+    color: #041e42;
+}
+
+p {
+    text-align: justify;
+    margin-bottom: 60px;
 }
 
 /* Styling for the button */
@@ -34,4 +70,40 @@ h4 {
     text-decoration: none;
     border-radius: 5px;
     margin-top: 20px;
+}
+
+.soren-jens, .homecoming {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.picture-expansion {
+    float: right;
+    margin-left: 20px;
+}
+
+.expansion {
+    height: 110px;
+}
+
+.picture-g-transition {
+    float: right;
+}
+
+.g-transition {
+    width: 100px;
+    margin-right: 5px;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.windturbine {
+    width: 200px;
+    float: left;
+    margin-right: 20px; /* Adjust as needed for spacing between image and text */
+    vertical-align: middle;
 }

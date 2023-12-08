@@ -1,0 +1,45 @@
+﻿
+.top-strip {
+    position: relative;
+    background-color: #c3dffa;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+    
+}
+
+.logo {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    width: 120px;
+    height: auto;
+}
+
+h1 {
+    flex-grow: 1;
+    text-align: center; /* Align the text to the left */
+    color: #041e42;
+    margin-left: 70px; /* Adjust as needed to create space between logo and text */
+}
+
+.card {
+    border: none; /* or border: 0; */
+    box-shadow: none; /* If there is any shadow applied to the card */
+}
+
+
+.comment-box {
+    border: 1px solid #ccc; /* Add a border for the comment box */
+    padding: 10px; /* Add padding for spacing within the box */
+    margin-bottom: 15px; /* Adjust the margin as needed to create space between comment boxes */
+    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
+    background-color: #F1EDEC;
+}
+
+h4{
+    margin-bottom: 20px;
+}
+
+

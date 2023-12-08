@@ -4,32 +4,44 @@
 @inject IAuthService authService
 @inject NavigationManager navMgr
 
+<div class="top-strip">
+    <div class="top-strip-container">
+        <img src="img/Eurologo.png" alt="Eurowind Logo" class="logo">
+        
+    </div>
+</div>
+
 <AuthorizeView>
     <NotAuthorized>
-        <div class="card">
-            <h3>Please login</h3>
-            <div class="field">
-                <label>User name:</label>
-                <input type="text" @bind="userName"/>
-            </div>
-            <div class="field">
-                <label style="text-align: center">Password:</label>
-                <input type="password" @bind="password"/>
-            </div>
-            @if (!string.IsNullOrEmpty(errorLabel))
-            {
+        <div class="container">
+            <div class="card">
+                <h3>Please login</h3>
                 <div class="field">
-                    <label style="color: red">
-                        @errorLabel
-                    </label>
+                    <label>User name:</label>
+                    <input type="text" @bind="userName"/>
                 </div>
-            }
-            <div class="field">
-                <button class="loginbtn" @onclick="LoginAsync">Log In</button>
+                <div class="field">
+                    <label style="text-align: center">Password:</label>
+                    <input type="password" @bind="password"/>
+                </div>
+                @if (!string.IsNullOrEmpty(errorLabel))
+                {
+                    <div class="field">
+                        <label style="color: red">
+                            @errorLabel
+                        </label>
+                    </div>
+                }
+                <div class="field">
+                    <button class="loginbtn" @onclick="LoginAsync">Log In</button>
+                </div>
+                <div class="field">
+                    <button class="createUserBtn" @onclick="CreateUser">Create Account</button>
+                </div>
             </div>
-            <div class="field">
-                <button class="createUserBtn" @onclick="CreateUser">Create Account</button>
-            </div>
+            <div class="picture4">
+                        <img src="img/picture4.jpg" alt="Renewable energy" class="picture4">
+                    </div>
         </div>
     </NotAuthorized>
     <Authorized>
