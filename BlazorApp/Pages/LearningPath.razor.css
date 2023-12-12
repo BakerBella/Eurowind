@@ -87,4 +87,166 @@ button{
 .learning1, .learning3, learning5, .learning6{
     width: 100%;
 }
+
+.question-box {
+    margin-bottom: 40px;
+   
+}
+
+.options {
+    margin-left: 20px;
+    text-align: left;
+    display: block;
+}
+
+.btn-submit {
+    margin-top: 20px;
+}
+
+.mt-3 {
+    margin-top: 20px;
+}
+
+.question-box label {
+
+    margin-bottom: 10px;
+}
+
+
+.top-strip {
+    position: relative;
+    background-color: #c3dffa;
+    color: #fff;
+    padding: 30px 20px;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.logo {
+    position: absolute;
+    top: 10px; /* Adjust the top position as needed */
+    left: 10px; /* Adjust the left position as needed */
+    width: 120px;
+    height: auto;
+}
+
+h1 {
+    flex-grow: 1;
+    text-align: center; /* Align the text to the left */
+    color: #041e42;
+    margin-left: 70px; /* Adjust as needed to create space between logo and text */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.arrow {
+    font-size: 60px;
+    color: #041e42;
+    margin: 10px 0;
+}
+
+
+.info-box {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.info-box p {
+    color: #333;
+    line-height: 1.5;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 24px;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.card-text {
+    color: #1a1e21;
+}
+
+button{
+    margin-top: 15px;
+}
+
+.learning1, .learning3, learning5, .learning6{
+    width: 100%;
+}
+
+.question-box {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    text-align: left;
+    width: 100%;
+}
+
+.options {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
     
+}
+
+
+    .option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.option input {
+    margin-right: 5px;
+    
+}
+
+.btn-submit {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.btn-submit:hover {
+    background-color: #45a049;
+}
+
