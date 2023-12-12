@@ -33,27 +33,25 @@
     else
     {
         <div>
-            <h4>Title: <b> @dto.Title</b></h4>
+            <div class="title">Title: <b>@dto.Title</b></div>
         </div>
         <div>
-            <h4>Body: <b> @dto.Body</b></h4>
-            
+            <div class="body"> <b>@dto.Body</b></div>
         </div>
-
         <div>
-            <h4>Author: <b> @dto.OwnerUsername</b></h4>
+            <div class="author">Author: <b>@dto.OwnerUsername</b></div>
         </div>
 
         <div>
-            <h4>Comments:</h4>
+            <div class="comments-heading">Comments:</div>
             @if (additionalComments != null && additionalComments.Any())
             {
                 @foreach (var comment in additionalComments)
                 {
                     <div class="comment-box">
-                        <p>Author: @comment.Username</p>
-                        <p>Body: @comment.Body</p>
-                        <button @onclick="() => DeleteComment(comment.Id)">Delete</button>
+                        <p>Answer from: @comment.Username</p>
+                        <p> @comment.Body</p>
+                        <button class="button" @onclick="() => DeleteComment(comment.Id)">Delete</button>
                     </div>
                 }
             }
@@ -70,10 +68,7 @@
     }
 </div>
 
-
-
 @code {
-
     [Parameter]
     public int Id { get; set; }
 
@@ -89,8 +84,6 @@
         {
             users = await userService.GetUsers();
             dto = await postService.GetByIdAsync(Id);
-
-    // Fetch comments from the service and assign them to comments
             additionalComments = await commentService.GetCommentsForPostAsync(Id);
         }
         catch (Exception e)
@@ -124,5 +117,4 @@
             msg = e.Message;
         }
     }
-
 }
