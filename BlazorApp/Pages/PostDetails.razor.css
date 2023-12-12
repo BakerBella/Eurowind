@@ -1,45 +1,85 @@
-﻿
-.top-strip {
-    position: relative;
+﻿.top-strip {
     background-color: #c3dffa;
     color: #fff;
-    padding: 30px 20px;
+    padding: 20px;
     text-align: center;
     margin-bottom: 30px;
-    
+    position: relative;
 }
 
 .logo {
     position: absolute;
-    top: 10px; /* Adjust the top position as needed */
-    left: 10px; /* Adjust the left position as needed */
+    top: 10px;
+    left: 10px;
     width: 120px;
     height: auto;
 }
 
 h1 {
     flex-grow: 1;
-    text-align: center; /* Align the text to the left */
+    text-align: center;
     color: #041e42;
-    margin-left: 70px; /* Adjust as needed to create space between logo and text */
+    margin-left: 70px;
 }
 
 .card {
-    border: none; /* or border: 0; */
-    box-shadow: none; /* If there is any shadow applied to the card */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    background-color: #fff;
+    margin-bottom: 30px;
 }
-
 
 .comment-box {
-    border: 1px solid #ccc; /* Add a border for the comment box */
-    padding: 10px; /* Add padding for spacing within the box */
-    margin-bottom: 15px; /* Adjust the margin as needed to create space between comment boxes */
-    border-radius: 5px; /* Optional: Add border-radius for rounded corners */
-    background-color: #F1EDEC;
-}
-
-h4{
+    border: 1px solid #ddd;
+    padding: 15px;
     margin-bottom: 20px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
 }
 
+h4 {
+    margin-bottom: 15px;
+}
 
+.title {
+    font-size: 24px;
+    font-weight: lighter;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.body {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.author {
+    font-size: 18px;
+    font-weight: normal; 
+    color: navy;
+    margin-bottom: 15px;
+}
+
+.comments-heading {
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.button {
+    background-color: #d9534f;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #c9302c;
+}
