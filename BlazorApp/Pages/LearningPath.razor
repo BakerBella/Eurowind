@@ -1,12 +1,13 @@
-﻿@page "/LearningPath"
+﻿
+@page "/LearningPath"
 
 <div class="top-strip">
     <div class="top-strip-container">
         <img src="img/Eurologo.png" alt="Eurowind Logo" class="logo">
         <div class="text-container">
-                    <h1>Learning Path</h1>
-                    
-                </div>
+            <h1>Learning Path</h1>
+
+        </div>
     </div>
 </div>
 
@@ -22,8 +23,8 @@
                     Climate change is primarily occurring due to the enhanced greenhouse effect, a result of human activities releasing large quantities of greenhouse gases, such as carbon dioxide (CO2), methane (CH4), and nitrous oxide (N2O), into the atmosphere. The burning of fossil fuels for energy, deforestation, and industrial processes significantly increase the concentration of these gases, trapping heat and causing the Earth's temperature to rise. This warming leads to various environmental changes, including melting ice caps, rising sea levels, and more frequent and severe weather events. Human-induced factors amplify the natural greenhouse effect, upsetting the delicate balance that has sustained Earth's climate for millennia. Tackling climate change necessitates global efforts to reduce emissions, transition to sustainable energy sources, and implement conservation measures to mitigate its adverse impacts on ecosystems and societies worldwide.
                 </p>
                 <div class="learning1">
-                        <img src="img/learning1.png" alt="learning1" class="learning1">
-                    </div>
+                    <img src="img/learning1.png" alt="learning1" class="learning1">
+                </div>
             </div>
             <button @onclick="() => ToggleInfoBox(1)">
                 @((activeContent == 1 && isContentExpanded) ? "Read less" : "Read more")
@@ -49,7 +50,7 @@
     </div>
 
     <div class="arrow">&#8595;</div>
-    
+
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">Step 3</h5>
@@ -59,8 +60,8 @@
                     Various sources of energy power our world. Fossil fuels like coal, oil, and natural gas are traditional but contribute to climate change. Renewable sources, such as solar and wind, harness nature's elements sustainably. Nuclear energy relies on atomic reactions. Hydropower utilizes flowing water. These diverse sources drive our global energy mix.
                 </p>
                 <div class="learning3">
-                                        <img src="img/learning3.png" alt="learning3" class="learning3">
-                                    </div>
+                    <img src="img/learning3.png" alt="learning3" class="learning3">
+                </div>
             </div>
             <button @onclick="() => ToggleInfoBox(3)">
                 @((activeContent == 3 && isContentExpanded) ? "Read less" : "Read more")
@@ -70,7 +71,7 @@
 
     <div class="arrow">&#8595;</div>
 
-    
+
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">Step 4</h5>
@@ -88,7 +89,8 @@
 
     <div class="arrow">&#8595;</div>
 
-    <!-- Step 5 -->    <div class="card mt-4">
+    <!-- Step 5 -->
+    <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">Step 5</h5>
             <p class="card-text" @onclick="() => ToggleInfoBox(5)">Knowledge about electricity</p>
@@ -96,14 +98,14 @@
                 <p>
                     Modern societies depend heavily on electricity for essential functions, shaping lifestyles,
                     economies, and infrastructure. Electricity powers homes, providing lighting, heating, cooling,
-                    and electronic devices. Industries rely on it for manufacturing processes, machinery, 
-                    and automation. Communication networks, from the internet to telecommunication systems, 
-                    hinge on a stable power supply. Transportation is increasingly electrified with electric 
+                    and electronic devices. Industries rely on it for manufacturing processes, machinery,
+                    and automation. Communication networks, from the internet to telecommunication systems,
+                    hinge on a stable power supply. Transportation is increasingly electrified with electric
                     cars and public transit.
                 </p>
                 <div class="learning5">
                     <img src="img/learning5.png" alt="learning5" class="learning5">
-                    </div>
+                </div>
             </div>
             <button @onclick="() => ToggleInfoBox(5)">
                 @((activeContent == 5 && isContentExpanded) ? "Read less" : "Read more")
@@ -113,37 +115,286 @@
 
     <div class="arrow">&#8595;</div>
 
-   
+
     <div class="card mt-4">
         <div class="card-body">
             <h5 class="card-title">Step 6</h5>
             <p class="card-text" @onclick="() => ToggleInfoBox(6)">Coal VS wind energy</p>
             <div class="info-box" style="display: @((activeContent == 6) ? "block" : "none")">
                 <p>
-                    Coal energy has been a mainstay, offering reliable power and supporting 
-                    industrialization. Its benefits include consistent energy production and 
-                    affordability. However, burning coal releases greenhouse gases, contributing to 
-                    climate change, and pollutants harmful to air quality and human health. Mining 
+                    Coal energy has been a mainstay, offering reliable power and supporting
+                    industrialization. Its benefits include consistent energy production and
+                    affordability. However, burning coal releases greenhouse gases, contributing to
+                    climate change, and pollutants harmful to air quality and human health. Mining
                     poses environmental challenges, impacting landscapes and water sources.
                 </p>
                 <div class="learning6">
                     <img src="img/learning6.jpg" alt="learning6" class="learning6">
-                    </div>
+                </div>
             </div>
             <button @onclick="() => ToggleInfoBox(6)">
                 @((activeContent == 6 && isContentExpanded) ? "Read less" : "Read more")
             </button>
         </div>
     </div>
+    
+    
+    <div class="card mt-4">
+        <div class="card-body">
+            <h5 class="card-title">Step 7</h5>
+            <p class="card-text" @onclick="() => ToggleInfoBox(7)">How to decrease your energy consumption</p>
+            <div class="info-box" style="display: @((activeContent == 7) ? "block" : "none")">
+                <p>
+                    To effectively decrease energy consumption, consider implementing energy-efficient practices such 
+                    as using LED bulbs, optimizing heating and cooling systems, and unplugging electronics when not in use. 
+                    Additionally, a significant step is embracing renewable energy sources like wind power, which involves 
+                    installing wind turbines to harness the kinetic energy of the wind and generate electricity sustainably.
+                </p>
+            </div>
+            <button @onclick="() => ToggleInfoBox(7)">
+                @((activeContent == 7 && isContentExpanded) ? "Read less" : "Read more")
+            </button>
+        </div>
+    </div>
+    
 </div>
+
+<!-- Multiple Choice Test -->
+<div class="card mt-4">
+    <div class="card-body">
+        <h5 class="card-title">Multiple Choice Test</h5>
+
+<!--question 1 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>1. What is the primary cause of climate change, leading to various environmental changes?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question1" value="a" @onchange="e => SetAnswer(1, e)">
+                <span>[A] Increased volcanic activity releasing greenhouse gases</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question1" value="b" @onchange="e => SetAnswer(1, e)">
+                <span>[B] Natural variations in Earth's orbit</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question1" value="c" @onchange="e => SetAnswer(1, e)">
+                <span>[C] Human activities releasing greenhouse gases like CO2, CH4, and N2O into the atmosphere</span>
+            </label>
+        </div>
+    </form>
+</div>
+
+<!-- Question 2 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>2. What actions are crucial in combating climate change according to the provided information?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question2" value="a" @onchange="e => SetAnswer(2, e)">
+                <span>[A] Increasing deforestation for economic growth</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question2" value="b" @onchange="e => SetAnswer(2, e)">
+                <span>[B] Promoting energy efficiency and investing in green technologies</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question2" value="c" @onchange="e => SetAnswer(2, e)">
+                <span>[C] Ignoring the need for global cooperation in emissions reduction</span>
+            </label>
+        </div>
+    </form>
+</div>
+
+<!-- Question 3 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>3. What energy source relies on atomic reactions?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question3" value="a" @onchange="e => SetAnswer(3, e)">
+                <span>[A] Geothermal energy</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question3" value="b" @onchange="e => SetAnswer(3, e)">
+                <span>[B] Nuclear energy</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question3" value="c" @onchange="e => SetAnswer(3, e)">
+                <span>[C] Biomass energy</span>
+            </label>
+        </div>
+    </form>
+</div>
+
+<!-- Question 4 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>4. What factors have contributed to Denmark's success in wind energy according to the information provided?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question4" value="a" @onchange="e => SetAnswer(4, e)">
+                <span>[A] Denmark's reliance on fossil fuels</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question4" value="b" @onchange="e => SetAnswer(4, e)">
+                <span>[B] Lack of government commitment</span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question4" value="c" @onchange="e => SetAnswer(4, e)">
+                <span>[C] Geographical and policy advantages </span>
+            </label>
+        </div>
+    </form>
+</div>
+
+<!-- Question 5 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>5. What are the primary functions of electricity in modern societies, as mentioned in the text?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question5" value="a" @onchange="e => SetAnswer(5, e)">
+                <span>[A] Powering industrial automation </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question5" value="b" @onchange="e => SetAnswer(5, e)">
+                <span>[B] Supporting agricultural processes </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question5" value="c" @onchange="e => SetAnswer(5, e)">
+                <span>[C] Facilitating space exploration </span>
+            </label>
+        </div>
+    </form>
+</div>
+
+<!-- Question 6 -->
+<div class="question-box">
+    <form>
+        <label>
+            <strong>6. What are the drawbacks and environmental concerns associated with coal energy?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question6" value="a" @onchange="e => SetAnswer(6, e)">
+                <span>[A] Increased air quality due to clean combustion processes </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question6" value="b" @onchange="e => SetAnswer(6, e)">
+                <span>[B] Reduced greenhouse gas emissions compared to other energy sources </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question6" value="c" @onchange="e => SetAnswer(6, e)">
+                <span>[C] Contribution to climate change, air pollution, and environmental challenges through mining </span>
+            </label>
+        </div>
+    </form>
+</div>
+
+
+<div class="question-box">
+    <form>
+        <label>
+            <strong>7. What are some of the inititives that you can do in order to decrease your energy consumption?</strong>
+        </label><br/>
+        <div class="options">
+            <label class="option">
+                <input type="radio" name="question7" value="a" @onchange="e => SetAnswer(7, e)">
+                <span>[A] Planting more trees </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question7" value="b" @onchange="e => SetAnswer(7, e)">
+                <span>[B] Keeping lights on during the day </span>
+            </label>
+            <label class="option">
+                <input type="radio" name="question7" value="c" @onchange="e => SetAnswer(7, e)">
+                <span>[C] Installing wind turbines is an effective initiative as they harness renewable wind energy, providing a sustainable and eco-friendly power source that reduces overall energy consumption. </span>
+            </label>
+        </div>
+    </form>
+</div>
+
+
+
+        <button class="btn-submit" @onclick="SubmitTest">Submit Test</button>
+        @if (showResults)
+        {
+            <div class="mt-3">
+                <h5>Results:</h5>
+                <p>@correctAnswersCountMessage</p>
+                <p>@correctAnsweredQuestionsMessage</p>
+            </div>
+        }
+    </div>
+</div>
+
 
 @code {
     int activeContent = 0;
     bool isContentExpanded = false;
+    Dictionary<string, string> selectedAnswers = new Dictionary<string, string>();
+    bool showResults = false;
+    string correctAnswersCountMessage = "";
+    string correctAnsweredQuestionsMessage = "";
 
-    void ToggleInfoBox(int contentId) {
+    void ToggleInfoBox(int contentId)
+    {
         activeContent = (activeContent == contentId) ? 0 : contentId;
         isContentExpanded = !isContentExpanded;
         StateHasChanged(); // Force Blazor to update the UI
+    }
+
+    void SetAnswer(int questionNumber, ChangeEventArgs e)
+    {
+        selectedAnswers[questionNumber.ToString()] = e.Value.ToString();
+    }
+
+    void SubmitTest()
+    {
+        int correctAnswersCount = 0;
+        List<int> correctAnsweredQuestions = new List<int>();
+
+        // Correct answers for each question
+        Dictionary<string, string> correctAnswers = new Dictionary<string, string>
+        {
+            { "1", "c" },
+            { "2", "b" },
+            { "3", "b" },
+            { "4", "c" },
+            { "5", "a" },
+            { "6", "c" },
+            { "7", "c" },
+        };
+
+        // Check each answer against the correct answer
+        foreach (var pair in selectedAnswers)
+        {
+            string questionNumber = pair.Key;
+            Console.WriteLine($"Question {questionNumber}: Your answer = {pair.Value}, Correct answer = {correctAnswers[questionNumber]}");
+
+            if (correctAnswers.ContainsKey(questionNumber) && correctAnswers[questionNumber] == pair.Value)
+            {
+                correctAnswersCount++;
+                correctAnsweredQuestions.Add(int.Parse(questionNumber));
+            }
+        }
+
+        // Display results after submitting the test
+        showResults = true;
+        correctAnswersCountMessage = $"You got {correctAnswersCount} out of 7 questions correct!";
+        correctAnsweredQuestionsMessage = correctAnswersCount > 0
+            ? $"Correctly answered questions: {string.Join(", ", correctAnsweredQuestions)}"
+            : "You didn't answer any questions correctly.";
     }
 }

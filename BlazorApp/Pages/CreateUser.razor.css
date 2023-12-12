@@ -23,13 +23,26 @@ h1 {
 
 }
 
-button{
-    margin-top: 15px;
-    margin-left: 45px;
-    margin-bottom: 15px;
-    
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+    width: 250px;
+    padding: 25px;
+    text-align: center;
+    margin: auto;
+    margin-top: 50px;
+    border-radius: 15px;
 }
 
-textarea{
-    width: 50%;
+
+
+.form-group {
+    margin-bottom: 20px; /* Adjust the margin-bottom value to control the spacing */
 }
+
+.field {
+    display: flex;
+    flex-direction: column;
+}
+
+
